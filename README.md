@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Buzzvel 2024 Dev Team
 
-## Getting Started
+I developed this microsite using the following technologies:
 
-First, run the development server:
+- Next.js
+- CSS3
+- GSAP
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Design
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To inspire me, I use v0.dev[https://v0.dev/] to get some ideas how can I do a design clean and minimalist to focus with the content and the animations.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Challenges
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The animation was a little challenge to me. Before this project, I never use GSAP to make animations.
+I saw the Buzzvel website and I amazed about the animations and transitions effects, you put and this makes me excited to know about how this animations works and how I can be a better developer to makes the UX more friendly.
 
-## Learn More
+## Development steps
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. First, I started a Next project and install GSAP to make something basic using this. I want to do this because makes me understand better and focus in one step at a time.
+2. I did search using ChatGPT to understand the animations and to make my own.
+3. I developed all microsite structure using lorem ipsum to focus in code and after this write the content.
+4.

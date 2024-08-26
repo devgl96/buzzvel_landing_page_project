@@ -1,10 +1,12 @@
 "use client";
+import { useEffect, useRef } from "react";
 import styles from "./page.module.css";
-import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import { ScrollToPlugin } from "gsap/all";
 import { Timeline } from "@/components/Timeline";
+import { RocketIcon } from "@/components/Icons/Rocket";
+import { ReasonCard } from "@/components/ReasonCard";
 
 export default function Home() {
   const words = ["Welcome", "Bem-vindo(a)", "Bienvenidos"];
@@ -22,6 +24,7 @@ export default function Home() {
     splitText.forEach((char) => {
       const span = document.createElement("span");
       span.textContent = char;
+      span.innerHTML += char === "." ? "<br />" : "";
       textRef.current.appendChild(span);
     });
 
@@ -56,11 +59,6 @@ export default function Home() {
   }, []);
 
   const handleNavigation = (sectionId: string) => {
-    console.log(
-      "🧐 >>> file: page.tsx:59 >>> handleNavigation >>> sectionId:",
-      sectionId
-    );
-
     gsap.to(window, {
       duration: 2,
       scrollTo: { y: "#" + sectionId, autoKill: true },
@@ -99,7 +97,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <main>
+      <main className={styles.content}>
         {/* <Image
           src={"/macbook_desk_books.jpg"}
           layout="fill"
@@ -108,72 +106,66 @@ export default function Home() {
           alt="A macbook on the desk in the right side with some books and pens in the left side"
           className={styles.heroImage}
         /> */}
-        <div id="home">
-          <h1 className="intro-title" ref={wordRef}>
+        <div id="home" className={styles.home}>
+          <h1 className={styles.welcomeMessage} ref={wordRef}>
             {words[0]}
           </h1>
-          <p className="intro-subtitle" ref={textRef}>
-            Hi, I&lsquo;m George Lucas, a passionate Frontend Developer.
-            Let&lsquo;s explore how I can bring value to Buzzvel!
+          <p className={styles.introduction} ref={textRef}>
+            I&lsquo;m George Lucas, a passionate Frontend Developer. Let&lsquo;s
+            explore how I can bring value to Buzzvel!
           </p>
         </div>
-        <div id="about-me">
+        <div id="about-me" className={styles.aboutMe}>
           <h1>About me</h1>
-          <h2>Experience</h2>
+          <p>
+            I&lsquo;m a software engineer with over 5 years of experience in
+            building web applications. I&lsquo;m passionate about creating
+            user-friendly and scalable solutions.
+          </p>
           <div className={styles.grid}>
             <div className={styles.card}>
+              <h2>Experience</h2>
+              <p>
+                I&lsquo;ve worked at various companies, including Acme Inc,
+                where I&lsquo;ve honed my skills in full-stack development,
+                project management, and team collaboration.
+              </p>
+            </div>
+            <div className={styles.card}>
               <h2>Skills</h2>
-              <p>I solve problems using Typescript and React</p>
               <p>
-                Sometimes I code using Python to automate process or create
-                something new
+                My expertise includes JavaScript, React, Node.js, SQL, and cloud
+                infrastructure. I&lsquo;m always eager to learn new technologies
+                and improve my craft.
               </p>
             </div>
             <div className={styles.card}>
-              <h2>Projects</h2>
+              <h2>Certifications</h2>
               <p>
-                I did some dashboards using React and Recharts to show data in
-                friendly way
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h2>Personal Projects</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatum reprehenderit ea perferendis, eligendi nam delectus
-                quis repudiandae natus numquam quos eius similique ipsum
-                laudantium nisi, perspiciatis architecto! Ad ducimus nisi
-                obcaecati culpa? Magni expedita fugit quis optio, iusto rerum.
-                Libero, odio et perferendis blanditiis eos praesentium excepturi
-                vel consequuntur ducimus qui, animi harum similique quidem
-                delectus? Ducimus dolore repellendus aperiam aut saepe,
-                reprehenderit, nemo enim voluptas totam fugit nobis tempore
-                eligendi provident veritatis asperiores repudiandae commodi sed!
-                Unde sequi ullam, nisi iure libero voluptatibus dolorum veniam
-                possimus fugit dolorem praesentium qui blanditiis provident eius
-                placeat corrupti ratione inventore dignissimos autem mollitia
-                omnis? Amet expedita, labore at saepe culpa velit, sapiente sed
-                vitae aperiam maxime enim sequi. Quos delectus assumenda facere
-                sed molestiae natus voluptatem illo quisquam, eaque quod libero
-                sunt cum neque odio? Ea nemo explicabo dolores nulla nobis
-                suscipit aspernatur, ad voluptates quidem repudiandae qui magni
-                iusto voluptatum placeat architecto consequatur quasi maiores
-                quia sapiente necessitatibus itaque, culpa fuga excepturi?
-                Consequatur aut nulla commodi. Beatae eum tempora reprehenderit
-                debitis explicabo ipsam. Sint, consectetur animi. Temporibus
-                sapiente amet architecto iure saepe sunt vero nesciunt
-                consequuntur numquam incidunt? Id deleniti iste adipisci nam
-                facilis rerum distinctio pariatur, dolore nobis quia quasi ea
-                beatae, aspernatur error et voluptates eligendi optio
-                accusantium quisquam sed, autem atque deserunt. Esse nihil
-                corrupti dolorem assumenda, quia eligendi reprehenderit cum
-                impedit commodi officiis animi veniam optio labore amet tempora
-                autem obcaecati dicta natus! Velit aperiam, impedit doloribus a
-                earum aspernatur.
+                I hold various certifications, including AWS Certified
+                Developer, Scrum Master, and CompTIA Security+.
               </p>
             </div>
           </div>
-          <h2>Why Buzzvel</h2>
+        </div>
+        <div>
+          <h1>Why I Work at Buzzvel</h1>
+          <div className={styles.whyContainer}>
+            <div>
+              <p>
+                Buzzvel is a company that values innovation, collaboration, and
+                continuous learning. I&lsquo;m excited to be part of a team that
+                is constantly pushing the boundaries of what&lsquo;s possible in
+                the tech industry.
+              </p>
+            </div>
+            <div className={styles.reasonsContainer}>
+              <ReasonCard />
+              <ReasonCard />
+              <ReasonCard />
+              <ReasonCard />
+            </div>
+          </div>
         </div>
         <div id="projects">
           <h1>Projects</h1>
