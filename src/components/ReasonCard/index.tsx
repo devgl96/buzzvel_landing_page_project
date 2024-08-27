@@ -8,19 +8,19 @@ import styles from "./reasoncard.module.css";
 export interface ReasonCardProps {
   title: string;
   description: string;
-  icon: string;
+  icon: "rocket" | "book" | "medal" | "users";
 }
 
 export function ReasonCard({ title, description, icon }: ReasonCardProps) {
-  const Icons = {
-    rocket: <RocketIcon />,
-    book: <BookIcon />,
-    medal: <MedalIcon />,
-    users: <UsersIcon />,
-  };
-
   function renderIcon() {
-    return Icons[icon];
+    const icons = {
+      rocket: <RocketIcon />,
+      book: <BookIcon />,
+      medal: <MedalIcon />,
+      users: <UsersIcon />,
+    };
+
+    return icons[icon] || null;
   }
 
   return (
