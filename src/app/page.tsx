@@ -58,8 +58,7 @@ export default function Home() {
   const words = ["Welcome", "Bem-vindo(a)", "Bienvenido(a)"];
   const wordRef = useRef<HTMLHeadingElement>(null);
   const wordIndex = useRef(0);
-  const textRef = useRef<HTMLHeadingElement>();
-  const text = useRef(null);
+  const textRef = useRef<HTMLParagraphElement | null>(null);
 
   // Typing effect
   useEffect(() => {
