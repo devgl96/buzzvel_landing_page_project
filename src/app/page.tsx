@@ -5,9 +5,9 @@ import gsap from "gsap";
 import Image from "next/image";
 import { ScrollToPlugin } from "gsap/all";
 import { Timeline } from "@/components/Timeline";
-import { RocketIcon } from "@/components/Icons/Rocket";
 import { ReasonCard, ReasonCardProps } from "@/components/ReasonCard";
 import Carousel from "@/components/Carousel";
+import { Card } from "@/components/Card";
 
 export default function Home() {
   const workBenefits: ReasonCardProps[] = [
@@ -36,7 +36,26 @@ export default function Home() {
       icon: "medal",
     },
   ];
-  const words = ["Welcome", "Bem-vindo(a)", "Bienvenidos"];
+
+  const aboutCards = [
+    {
+      title: "Experience",
+      description:
+        "I‘ve worked at various companies, including Acme Inc, where I‘ve honed my skills in full-stack development, project management, and team collaboration.",
+    },
+    {
+      title: "Skills",
+      description:
+        "My expertise includes JavaScript, React, Node.js, SQL, and cloud infrastructure. I‘m always eager to learn new technologies and improve my craft.",
+    },
+    {
+      title: "Certifications",
+      description:
+        "I hold various certifications, including AWS Certified Developer, Scrum Master, and CompTIA Security+.",
+    },
+  ];
+
+  const words = ["Welcome", "Bem-vindo(a)", "Bienvenido(a)"];
   const wordRef = useRef(null);
   const wordIndex = useRef(0);
   const textRef = useRef<HTMLHeadingElement>();
@@ -93,8 +112,6 @@ export default function Home() {
     });
   };
 
-  // gsap.to(window, { duration: 2, scrollTo: 400 });
-
   return (
     <div className={styles.mainContainer}>
       <nav>
@@ -125,14 +142,6 @@ export default function Home() {
       </nav>
 
       <main className={styles.content}>
-        {/* <Image
-          src={"/macbook_desk_books.jpg"}
-          layout="fill"
-          // objectFit="cover"
-          // objectPosition="center"
-          alt="A macbook on the desk in the right side with some books and pens in the left side"
-          className={styles.heroImage}
-        /> */}
         <div id="home" className={styles.home}>
           <h1 className={styles.welcomeMessage} ref={wordRef}>
             {words[0]}
@@ -145,34 +154,21 @@ export default function Home() {
         <div id="about-me" className={styles.aboutMe}>
           <h1>About me</h1>
           <p>
-            I&lsquo;m a software engineer with over 5 years of experience in
+            I&lsquo;m a frontend developer with over 3 years of experience in
             building web applications. I&lsquo;m passionate about creating
-            user-friendly and scalable solutions.
+            user-friendly and make solutions to help people to have a better
+            life.
           </p>
+        </div>
+        <div className={styles.cardContainer}>
           <div className={styles.grid}>
-            <div className={styles.card}>
-              <h2>Experience</h2>
-              <p>
-                I&lsquo;ve worked at various companies, including Acme Inc,
-                where I&lsquo;ve honed my skills in full-stack development,
-                project management, and team collaboration.
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h2>Skills</h2>
-              <p>
-                My expertise includes JavaScript, React, Node.js, SQL, and cloud
-                infrastructure. I&lsquo;m always eager to learn new technologies
-                and improve my craft.
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h2>Certifications</h2>
-              <p>
-                I hold various certifications, including AWS Certified
-                Developer, Scrum Master, and CompTIA Security+.
-              </p>
-            </div>
+            {aboutCards.map((card, cardIndex) => (
+              <Card
+                key={cardIndex}
+                title={card.title}
+                description={card.description}
+              />
+            ))}
           </div>
         </div>
         <div>
