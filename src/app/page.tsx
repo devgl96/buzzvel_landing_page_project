@@ -192,6 +192,7 @@ export default function Home() {
                   key={benefitIndex}
                   title={benefit.title}
                   description={benefit.description}
+                  icon={benefit.icon}
                 />
               ))}
             </div>
