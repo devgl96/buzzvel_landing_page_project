@@ -56,13 +56,15 @@ export default function Home() {
   ];
 
   const words = ["Welcome", "Bem-vindo(a)", "Bienvenido(a)"];
-  const wordRef = useRef(null);
+  const wordRef = useRef<HTMLHeadingElement>(null);
   const wordIndex = useRef(0);
   const textRef = useRef<HTMLHeadingElement>();
   const text = useRef(null);
 
   // Typing effect
   useEffect(() => {
+    if (!textRef.current?.textContent) return;
+
     const text = textRef.current.textContent;
     const splitText = text.split("");
     textRef.current.textContent = ""; // Clear the text content
@@ -71,6 +73,9 @@ export default function Home() {
       const span = document.createElement("span");
       span.textContent = char;
       span.innerHTML += char === "." ? "<br />" : "";
+
+      if (!textRef.current) return;
+
       textRef.current.appendChild(span);
     });
 
@@ -89,6 +94,7 @@ export default function Home() {
         opacity: 0,
         duration: 0.5,
         onComplete: () => {
+          if (!wordRef.current?.textContent) return;
           wordRef.current.textContent = words[wordIndex.current];
           gsap.to(wordRef.current, { opacity: 1, duration: 1 });
         },
