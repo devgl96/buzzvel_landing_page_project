@@ -6,9 +6,36 @@ import Image from "next/image";
 import { ScrollToPlugin } from "gsap/all";
 import { Timeline } from "@/components/Timeline";
 import { RocketIcon } from "@/components/Icons/Rocket";
-import { ReasonCard } from "@/components/ReasonCard";
+import { ReasonCard, ReasonCardProps } from "@/components/ReasonCard";
+import Carousel from "@/components/Carousel";
 
 export default function Home() {
+  const workBenefits: ReasonCardProps[] = [
+    {
+      title: "Innovation",
+      description:
+        "Acme Inc encourages its employees to think outside the box and explore new ideas.",
+      icon: "rocket",
+    },
+    {
+      title: "Collaboration",
+      description:
+        "The team at Acme Inc works together seamlessly to deliver the best possible solutions.",
+      icon: "users",
+    },
+    {
+      title: "Learning",
+      description:
+        "Acme Inc encourages its employees to continuously learn and grow their skills.",
+      icon: "book",
+    },
+    {
+      title: "Recognition",
+      description:
+        "Acme Inc values the contributions of its employees and recognizes their achievements.",
+      icon: "medal",
+    },
+  ];
   const words = ["Welcome", "Bem-vindo(a)", "Bienvenidos"];
   const wordRef = useRef(null);
   const wordIndex = useRef(0);
@@ -160,88 +187,19 @@ export default function Home() {
               </p>
             </div>
             <div className={styles.reasonsContainer}>
-              <ReasonCard />
-              <ReasonCard />
-              <ReasonCard />
-              <ReasonCard />
+              {workBenefits.map((benefit, benefitIndex) => (
+                <ReasonCard
+                  key={benefitIndex}
+                  title={benefit.title}
+                  description={benefit.description}
+                />
+              ))}
             </div>
           </div>
         </div>
         <div id="projects">
-          <h1>Projects</h1>
-          <div className={styles.grid}>
-            <div className={styles.card}>
-              <h2>Viplant</h2>
-              <p>
-                We created a new website for VIPLANT with the main aim of
-                enhancing the user experience, extending the quality of the
-                physical purchase to the digital environment.
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h2>Traquinices</h2>
-              <p>
-                Traquinices is a company that was born in Portugal in 1996. It
-                specializes in the distribution of premium Childcare products to
-                provide the best satisfaction to customers.
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h2>DBS</h2>
-              <p>
-                We built this platform and APP that allowed primary users to
-                track medical tests.
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h2>Miss Can</h2>
-              <p>
-                A Portuguese and family project of the canning industry with 3
-                generations of history and tradition. Canned food produced in
-                Portugal, with Portuguese fish and artisanal.
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h2>ThinkFeridas</h2>
-              <p>
-                ThinkFeridas is an application that responds to the need of many
-                health professionals who work alone in the clinical decision
-                regarding treating complex wounds.
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h2>Vigias da Arriba</h2>
-              <p>
-                Vigias da Arriba is a luxury, unique and exclusive condominium
-                with several villas with a superb sea view. It is located in
-                Torres Vedras.
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h2>Portugal Advanced Health</h2>
-              <p>
-                Portugal Advanced Health or PAH is an innovative and pioneering
-                project in the area of health in Portugal, specializing in
-                hyperbaric treatments at 1.4atm (atmosphere).
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h2>Coma ou Leve</h2>
-              <p>
-                An original concept, on the market since 1976. Meals ready to
-                eat, with a history that stay in the memory of those who visit
-                them.
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h2>Hotspotty</h2>
-              <p>
-                An innovative &quot;All-in-One&quot; platform to plan, manage
-                and optimize decentralized networks such as the global Helium
-                network for the Internet of Things.
-              </p>
-            </div>
-          </div>
+          <h1>Buzzvel Projects</h1>
+          <Carousel />
         </div>
         <div id="career">
           <h1>Career Timeline</h1>
