@@ -10,18 +10,20 @@ gsap.registerPlugin(ScrollTrigger);
 export function Timeline() {
   const events = [
     {
-      date: "2022",
-      title: "Started my journey",
-      description: "I began learning web development.",
-    },
-    {
-      date: "2023",
-      title: "First Job",
-      description: "Landed my first developer job at XYZ Company.",
-    },
-    {
       date: "2024",
-      title: "Buzzvel Application",
+      title: "Start my journey at Buzzvel",
+      description:
+        "I will understand company principles and learn with senior developers from team. And I will help in the projects with all my tech and agile methodologies knowledge.",
+    },
+    {
+      date: "2025",
+      title: "More responsability in projects",
+      description:
+        "After understand all company and the projects we working, I will have more responsability leading some small projects or a project too. I will help junior developers too",
+    },
+    {
+      date: "2026",
+      title: "Lead",
       description: "Created a microsite to apply for Buzzvel.",
     },
   ];
