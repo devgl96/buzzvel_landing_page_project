@@ -1,13 +1,14 @@
 "use client";
 import { useEffect, useRef } from "react";
-import styles from "./page.module.css";
 import gsap from "gsap";
 import Image from "next/image";
 import { ScrollToPlugin } from "gsap/all";
 import { Timeline } from "@/components/Timeline";
 import { ReasonCard, ReasonCardProps } from "@/components/ReasonCard";
-import Carousel from "@/components/Carousel";
+import { Carousel } from "@/components/Carousel";
 import { Card } from "@/components/Card";
+
+import styles from "./page.module.css";
 
 export default function Home() {
   const workBenefits: ReasonCardProps[] = [
