@@ -1,12 +1,14 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import styles from "./carousel.module.css";
 
-const Carousel = () => {
+export function Carousel() {
   const carouselRef = useRef(null);
-  const slidesRef = useRef([]);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
+  const setRef = useCallback((el: HTMLDivElement | null, index: number) => {
+    slidesRef.current[index] = el;
+  }, []);
 
   const slides = [
     {
@@ -109,7 +111,7 @@ const Carousel = () => {
           <div
             className={styles.carouselSlide}
             key={index}
-            ref={(el) => (slidesRef.current[index] = el)}
+            ref={(el) => setRef(el, index)}
           >
             <Image
               src={slide.image}
@@ -136,6 +138,4 @@ const Carousel = () => {
       </div>
     </div>
   );
-};
-
-export default Carousel;
+}
