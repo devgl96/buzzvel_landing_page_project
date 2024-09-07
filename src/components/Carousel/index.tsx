@@ -106,6 +106,7 @@ export function Carousel() {
 
   return (
     <div className={styles.carousel} ref={carouselRef}>
+      <h1>Buzzvel Projects</h1>
       <div className={styles.carouselTrack}>
         {slides.map((slide, index) => (
           <div
