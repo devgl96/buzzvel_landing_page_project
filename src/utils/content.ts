@@ -4,25 +4,25 @@ export const workBenefits: ReasonCardProps[] = [
   {
     title: "Innovation",
     description:
-      "Acme Inc encourages its employees to think outside the box and explore new ideas.",
+      "Buzzvel is at the forefront of innovation, and I’m eager to contribute with my skills in full-stack development, helping solve real-world challenges through cutting-edge technologies.",
     icon: "rocket",
   },
   {
     title: "Collaboration",
     description:
-      "The team at Acme Inc works together seamlessly to deliver the best possible solutions.",
+      "I value teamwork and believe that my experience in collaborative environments aligns with Buzzvel's focus on delivering impactful solutions through seamless cooperation.",
     icon: "users",
   },
   {
     title: "Learning",
     description:
-      "Acme Inc encourages its employees to continuously learn and grow their skills.",
+      "Continuous learning is essential to me, and Buzzvel’s commitment to growth matches my passion for staying updated on the latest technologies and improving my skills.",
     icon: "book",
   },
   {
     title: "Recognition",
     description:
-      "Acme Inc values the contributions of its employees and recognizes their achievements.",
+      "I’m excited to be part of a company that values and recognizes its team’s contributions, fostering both personal and professional development.",
     icon: "medal",
   },
 ];
@@ -63,3 +63,24 @@ export const aboutCards = [
 ];
 
 export const words = ["Welcome", "Bem-vindo(a)", "Bienvenido(a)"];
+
+export const events = [
+  {
+    date: "2024",
+    title: "Start my journey at Buzzvel",
+    description:
+      "I will understand company principles and learn with senior developers from team. And I will help in the projects with all my tech and agile methodologies knowledge.",
+  },
+  {
+    date: "2025",
+    title: "More responsability in projects",
+    description:
+      "After understand all company and the projects we working, I will have more responsability leading some small projects or a project too. I will help junior developers too",
+  },
+  {
+    date: "2026",
+    title: "Lead",
+    description:
+      "Contributing to the strategic direction of front-end development at Buzzvel, working on cutting-edge technologies. Keeping up with industry trends and applying them to Buzzvel's projects.",
+  },
+];
