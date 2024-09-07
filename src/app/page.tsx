@@ -25,7 +25,6 @@ export default function Home() {
   const wordRef = useRef<HTMLHeadingElement>(null);
   const wordIndex = useRef(0);
   const textRef = useRef<HTMLParagraphElement | null>(null);
-  const sectionRefs = useRef<HTMLDivElement[]>([]);
 
   // Typing effect
   useEffect(() => {
@@ -99,11 +98,12 @@ export default function Home() {
             {words[0]}
           </h1>
           <p className={styles.introduction} ref={textRef}>
-            I&lsquo;m George Lucas, a passionate Frontend Developer. Let&lsquo;s
-            explore how I can bring value to Buzzvel!
+            Welcome to my portfolio! I’m George Lucas, a passionate Full Stack
+            Developer with a strong background in creating innovative web
+            solutions. Let’s explore how I can contribute to Buzzvel’s vision.
           </p>
         </div>
-        <div id="about-me" className={styles.aboutMe}>
+        <section id="about-me" className={styles.aboutMe}>
           <h1>About me</h1>
           <p>
             I&lsquo;m a frontend developer with over 3 years of experience in
@@ -111,27 +111,38 @@ export default function Home() {
             user-friendly and make solutions to help people to have a better
             life.
           </p>
-        </div>
-        <div className={styles.cardContainer}>
-          <div className={styles.grid}>
-            {aboutCards.map((card, cardIndex) => (
-              <Card
-                key={cardIndex}
-                title={card.title}
-                description={card.description}
-              />
-            ))}
+
+          <div className={styles.cardContainer}>
+            <div className={styles.grid}>
+              {aboutCards.map((card, cardIndex) => (
+                <Card
+                  key={cardIndex}
+                  title={card.title}
+                  description={card.description}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
         <div>
           <h1>Why I Work at Buzzvel</h1>
           <div className={styles.whyContainer}>
-            <div>
+            <div
+              style={{
+                width: "100%",
+                textAlign: "justify",
+                lineHeight: "30px",
+              }}
+            >
               <p>
-                Buzzvel is a company that values innovation, collaboration, and
-                continuous learning. I&lsquo;m excited to be part of a team that
-                is constantly pushing the boundaries of what&lsquo;s possible in
-                the tech industry.
+                Buzzvel is at the forefront of innovation, constantly pushing
+                the boundaries of what’s possible in the tech industry. I’m
+                excited to contribute to real-world problem-solving projects in
+                a company that values collaboration, continuous learning, and
+                growth. With my experience in full-stack development and a
+                passion for learning and adapting, I see Buzzvel as the perfect
+                place for me to make a meaningful impact while growing as a
+                professional.
               </p>
             </div>
             <div className={styles.reasonsContainer}>

@@ -24,7 +24,8 @@ export function Timeline() {
     {
       date: "2026",
       title: "Lead",
-      description: "Created a microsite to apply for Buzzvel.",
+      description:
+        "Contributing to the strategic direction of front-end development at Buzzvel, working on cutting-edge technologies. Keeping up with industry trends and applying them to Buzzvel's projects.",
     },
   ];
 
