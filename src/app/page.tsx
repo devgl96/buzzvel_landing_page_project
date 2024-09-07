@@ -12,7 +12,7 @@ import { Carousel } from "@/components/Carousel";
 import { Card } from "@/components/Card";
 import { GithubIcon } from "@/components/Icons/Github";
 import { LinkedinIcon } from "@/components/Icons/Linkedin";
-import { MailIcon } from "@/components/Icons/Mail";
+import { TiktokIcon } from "@/components/Icons/Tiktok";
 import { WhatsappIcon } from "@/components/Icons/Whatsapp";
 
 import { switchText } from "@/utils/effects/switchText";
@@ -98,9 +98,9 @@ export default function Home() {
             {words[0]}
           </h1>
           <p className={styles.introduction} ref={textRef}>
-            Welcome to my portfolio! I’m George Lucas, a passionate Full Stack
-            Developer with a strong background in creating innovative web
-            solutions. Let’s explore how I can contribute to Buzzvel’s vision.
+            I’m George Lucas, a passionate Full Stack Developer with a strong
+            background in creating innovative web solutions. Let’s explore how I
+            can contribute to Buzzvel’s vision.
           </p>
         </div>
         <section id="about-me" className={styles.aboutMe}>
@@ -165,7 +165,7 @@ export default function Home() {
           <Timeline />
         </div>
       </main>
-      <footer>
+      <footer className={styles.footerContainer}>
         <p>Developed by George Lucas</p>
         <div className={styles.footerIconContainer}>
           <Link href={"https://github.com/devgl96"} target="_blank">
@@ -181,14 +181,17 @@ export default function Home() {
               <LinkedinIcon width={"23px"} height={"23px"} />
             </div>
           </Link>
-          <Link href={"georgelucas.dev@gmail.com"} target="_blank">
-            <div className={styles.footerIcon}>
-              <MailIcon width={"23px"} height={"23px"} />
-            </div>
-          </Link>
           <Link href={"https://wa.me/5573982263864"} target="_blank">
             <div className={styles.footerIcon}>
               <WhatsappIcon width={"23px"} height={"23px"} />
+            </div>
+          </Link>
+          <Link
+            href={"https://www.tiktok.com/@georgelucas.dev"}
+            target="_blank"
+          >
+            <div className={styles.footerIcon}>
+              <TiktokIcon width={"23px"} height={"23px"} />
             </div>
           </Link>
         </div>
