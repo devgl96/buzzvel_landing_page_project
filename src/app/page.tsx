@@ -1,113 +1,53 @@
 "use client";
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import Link from "next/link";
 import Image from "next/image";
+
+import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/all";
+
 import { Timeline } from "@/components/Timeline";
-import { ReasonCard, ReasonCardProps } from "@/components/ReasonCard";
+import { ReasonCard } from "@/components/ReasonCard";
 import { Carousel } from "@/components/Carousel";
 import { Card } from "@/components/Card";
+import { GithubIcon } from "@/components/Icons/Github";
+import { LinkedinIcon } from "@/components/Icons/Linkedin";
+import { MailIcon } from "@/components/Icons/Mail";
+import { WhatsappIcon } from "@/components/Icons/Whatsapp";
+
+import { switchText } from "@/utils/effects/switchText";
+import { typeText } from "@/utils/effects/typeText";
+import { words, aboutCards, workBenefits } from "@/utils/content";
 
 import styles from "./page.module.css";
 
 export default function Home() {
-  const workBenefits: ReasonCardProps[] = [
-    {
-      title: "Innovation",
-      description:
-        "Acme Inc encourages its employees to think outside the box and explore new ideas.",
-      icon: "rocket",
-    },
-    {
-      title: "Collaboration",
-      description:
-        "The team at Acme Inc works together seamlessly to deliver the best possible solutions.",
-      icon: "users",
-    },
-    {
-      title: "Learning",
-      description:
-        "Acme Inc encourages its employees to continuously learn and grow their skills.",
-      icon: "book",
-    },
-    {
-      title: "Recognition",
-      description:
-        "Acme Inc values the contributions of its employees and recognizes their achievements.",
-      icon: "medal",
-    },
-  ];
-
-  const aboutCards = [
-    {
-      title: "Experience",
-      description:
-        "I‘ve worked at various companies, including Acme Inc, where I‘ve honed my skills in full-stack development, project management, and team collaboration.",
-    },
-    {
-      title: "Skills",
-      description:
-        "My expertise includes JavaScript, React, Node.js, SQL, and cloud infrastructure. I‘m always eager to learn new technologies and improve my craft.",
-    },
-    {
-      title: "Certifications",
-      description:
-        "I hold various certifications, including AWS Certified Developer, Scrum Master, and CompTIA Security+.",
-    },
-  ];
-
-  const words = ["Welcome", "Bem-vindo(a)", "Bienvenido(a)"];
   const wordRef = useRef<HTMLHeadingElement>(null);
   const wordIndex = useRef(0);
   const textRef = useRef<HTMLParagraphElement | null>(null);
+  const sectionRefs = useRef<HTMLDivElement[]>([]);
 
   // Typing effect
   useEffect(() => {
     if (!textRef.current?.textContent) return;
 
-    const text = textRef.current.textContent;
-    const splitText = text.split("");
-    textRef.current.textContent = ""; // Clear the text content
-
-    splitText.forEach((char) => {
-      const span = document.createElement("span");
-      span.textContent = char;
-      span.innerHTML += char === "." ? "<br />" : "";
-
-      if (!textRef.current) return;
-
-      textRef.current.appendChild(span);
-    });
-
-    gsap.fromTo(
-      textRef.current.children,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.05, stagger: 0.05 }
-    );
+    typeText(textRef);
   }, []);
 
   // Switch text effect
   useEffect(() => {
-    const switchText = () => {
-      wordIndex.current = (wordIndex.current + 1) % words.length;
-      gsap.to(wordRef.current, {
-        opacity: 0,
-        duration: 0.5,
-        onComplete: () => {
-          if (!wordRef.current?.textContent) return;
-          wordRef.current.textContent = words[wordIndex.current];
-          gsap.to(wordRef.current, { opacity: 1, duration: 1 });
-        },
-      });
-    };
+    wordIndex.current = switchText(wordRef, words, wordIndex.current); // Call switchText immediately
 
-    const interval = setInterval(switchText, 3000); // Change text every second
+    const interval = setInterval(() => {
+      wordIndex.current = switchText(wordRef, words, wordIndex.current); // Change text every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval); // Clean up the interval on component unmount
-  }, []);
+  }, [words]); // Add words to the dependency array
 
   useEffect(() => {
     gsap.registerPlugin(ScrollToPlugin);
+    gsap.registerPlugin(ScrollTrigger);
   }, []);
 
   const handleNavigation = (sectionId: string) => {
@@ -201,7 +141,6 @@ export default function Home() {
           </div>
         </div>
         <div id="projects">
-          <h1>Buzzvel Projects</h1>
           <Carousel />
         </div>
         <div id="career">
@@ -209,7 +148,34 @@ export default function Home() {
           <Timeline />
         </div>
       </main>
-      <footer></footer>
+      <footer>
+        <p>Developed by George Lucas</p>
+        <div className={styles.footerIconContainer}>
+          <Link href={"https://github.com/devgl96"} target="_blank">
+            <div className={styles.footerIcon}>
+              <GithubIcon width={"26px"} height={"26px"} />
+            </div>
+          </Link>
+          <Link
+            href={"https://www.linkedin.com/in/georgelucas-dev/"}
+            target="_blank"
+          >
+            <div className={styles.footerIcon}>
+              <LinkedinIcon width={"23px"} height={"23px"} />
+            </div>
+          </Link>
+          <Link href={"georgelucas.dev@gmail.com"} target="_blank">
+            <div className={styles.footerIcon}>
+              <MailIcon width={"23px"} height={"23px"} />
+            </div>
+          </Link>
+          <Link href={"https://wa.me/5573982263864"} target="_blank">
+            <div className={styles.footerIcon}>
+              <WhatsappIcon width={"23px"} height={"23px"} />
+            </div>
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 }
