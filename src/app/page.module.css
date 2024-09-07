@@ -99,6 +99,8 @@
   gap: 3rem;
 
   background-color: #161111;
+
+  padding: 15px;
 }
 
 .reasonsContainer {
@@ -222,6 +224,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.footerIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: brightness(0.8);
+}
+
+.footerIcon:hover {
+  filter: brightness(1);
+  cursor: pointer;
+}
+
+.footerIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
 }
 
 /* Mobile */
