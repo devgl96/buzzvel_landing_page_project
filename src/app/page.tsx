@@ -47,16 +47,22 @@ export default function Home() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollToPlugin);
-    gsap.registerPlugin(ScrollTrigger);
   }, []);
 
-  const handleNavigation = (sectionId: string) => {
+  function handleNavigation(sectionId: string) {
     gsap.to(window, {
-      duration: 2,
-      scrollTo: { y: "#" + sectionId, autoKill: true },
-      ease: "power2",
+      scrollTo: { y: `#${sectionId}`, offsetY: 0, autoKill: true },
+      duration: 1.5,
+      ease: "power2.inOut",
     });
-  };
+  }
+
+  function clickHandleNavigation(sectionId: string) {
+    return (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault(); // Prevent default anchor behavior
+      handleNavigation(sectionId); // Call the smooth scrolling function
+    };
+  }
 
   return (
     <div className={styles.mainContainer}>
@@ -72,16 +78,16 @@ export default function Home() {
           />
         </div>
         <div className={styles.navOptions}>
-          <a href="#home" onClick={() => handleNavigation("home")}>
+          <a href="#home" onClick={clickHandleNavigation("home")}>
             Home
           </a>
-          <a href="#about-me" onClick={() => handleNavigation("about-me")}>
+          <a href="#about-me" onClick={clickHandleNavigation("about-me")}>
             About me
           </a>
-          <a href="#projects" onClick={() => handleNavigation("projects")}>
+          <a href="#projects" onClick={clickHandleNavigation("projects")}>
             Buzzvel Projects
           </a>
-          <a href="#career" onClick={() => handleNavigation("career")}>
+          <a href="#career" onClick={clickHandleNavigation("career")}>
             Career Timeline
           </a>
         </div>
