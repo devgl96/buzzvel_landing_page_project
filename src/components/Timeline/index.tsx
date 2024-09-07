@@ -2,39 +2,19 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { events } from "@/utils/content";
+
 import styles from "./timeline.module.css";
 
-// Register ScrollTrigger with GSAP
-gsap.registerPlugin(ScrollTrigger);
-
 export function Timeline() {
-  const events = [
-    {
-      date: "2024",
-      title: "Start my journey at Buzzvel",
-      description:
-        "I will understand company principles and learn with senior developers from team. And I will help in the projects with all my tech and agile methodologies knowledge.",
-    },
-    {
-      date: "2025",
-      title: "More responsability in projects",
-      description:
-        "After understand all company and the projects we working, I will have more responsability leading some small projects or a project too. I will help junior developers too",
-    },
-    {
-      date: "2026",
-      title: "Lead",
-      description:
-        "Contributing to the strategic direction of front-end development at Buzzvel, working on cutting-edge technologies. Keeping up with industry trends and applying them to Buzzvel's projects.",
-    },
-  ];
-
   const timelineRef = useRef(null);
 
   useEffect(() => {
-    const timelineItems = gsap.utils.toArray(`.${styles.timelineItem}`);
+    const timelineItems = gsap.utils.toArray(
+      `.${styles.timelineItem}`
+    ) as HTMLElement[];
 
-    timelineItems.forEach((item) => {
+    timelineItems.forEach((item: HTMLElement) => {
       gsap.fromTo(
         item,
         { opacity: 0, y: 50 }, // Initial state
@@ -48,11 +28,15 @@ export function Timeline() {
             start: "top bottom", // Start animation when the top of the item reaches the bottom of the viewport
             end: "bottom top", // End when the bottom of the item reaches the top of the viewport
             toggleActions: "play none none reverse", // Play on enter, reverse on leave
-            markers: true, // For debugging: Shows where the animation starts and ends
           },
         }
       );
     });
+  }, []);
+
+  useEffect(() => {
+    // Register ScrollTrigger with GSAP
+    gsap.registerPlugin(ScrollTrigger);
   }, []);
 
   return (
