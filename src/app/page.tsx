@@ -26,23 +26,21 @@ export default function Home() {
   const wordIndex = useRef(0);
   const textRef = useRef<HTMLParagraphElement | null>(null);
 
-  // Typing effect
   useEffect(() => {
     if (!textRef.current?.textContent) return;
 
     typeText(textRef);
   }, []);
 
-  // Switch text effect
   useEffect(() => {
-    wordIndex.current = switchText(wordRef, words, wordIndex.current); // Call switchText immediately
+    wordIndex.current = switchText(wordRef, words, wordIndex.current);
 
     const interval = setInterval(() => {
-      wordIndex.current = switchText(wordRef, words, wordIndex.current); // Change text every 3 seconds
+      wordIndex.current = switchText(wordRef, words, wordIndex.current);
     }, 3000);
 
-    return () => clearInterval(interval); // Clean up the interval on component unmount
-  }, [words]); // Add words to the dependency array
+    return () => clearInterval(interval);
+  }, [words]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollToPlugin);
@@ -58,8 +56,8 @@ export default function Home() {
 
   function clickHandleNavigation(sectionId: string) {
     return (e: React.MouseEvent<HTMLAnchorElement>) => {
-      e.preventDefault(); // Prevent default anchor behavior
-      handleNavigation(sectionId); // Call the smooth scrolling function
+      e.preventDefault();
+      handleNavigation(sectionId);
     };
   }
 
@@ -103,37 +101,29 @@ export default function Home() {
             can contribute to Buzzvel’s vision.
           </p>
         </div>
-        <section id="about-me" className={styles.aboutMe}>
+        <div>
           <h1>About me</h1>
-          <p>
-            I&lsquo;m a frontend developer with over 3 years of experience in
-            building web applications. I&lsquo;m passionate about creating
-            user-friendly and make solutions to help people to have a better
-            life.
-          </p>
-
-          <div className={styles.cardContainer}>
-            <div className={styles.grid}>
-              {aboutCards.map((card, cardIndex) => (
-                <Card
-                  key={cardIndex}
-                  title={card.title}
-                  description={card.description}
-                />
-              ))}
-            </div>
+          <div className={styles.aboutMe}>
+            <p>
+              I&lsquo;m a frontend developer with over 3 years of experience in
+              building web applications. I&lsquo;m passionate about creating
+              user-friendly and make solutions to help people to have a better
+              life.
+            </p>
           </div>
-        </section>
+          <div className={styles.cardContainer}>
+            {aboutCards.map((card, cardIndex) => (
+              <>
+                <h2>{card.title}</h2>
+                <Card key={cardIndex} description={card.description} />
+              </>
+            ))}
+          </div>
+        </div>
         <div>
           <h1>Why I Work at Buzzvel</h1>
           <div className={styles.whyContainer}>
-            <div
-              style={{
-                width: "100%",
-                textAlign: "justify",
-                lineHeight: "30px",
-              }}
-            >
+            <div className={styles.whyContainerContent}>
               <p>
                 Buzzvel is at the forefront of innovation, constantly pushing
                 the boundaries of what’s possible in the tech industry. I’m
