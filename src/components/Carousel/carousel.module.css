@@ -8,7 +8,6 @@
 .carouselTrack {
   display: flex;
   width: 300%;
-  /* Adjust based on the number of slides */
   height: 100%;
   transition: transform 0.5s ease-in-out;
 }
@@ -35,7 +34,6 @@
 }
 
 .carouselImage:hover {
-  cursor: pointer;
   filter: brightness(0.8);
 }
 
